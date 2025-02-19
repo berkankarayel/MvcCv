@@ -1,0 +1,47 @@
+﻿
+<div class="resume-section-content">
+    <form method="post" id="contactForm" onsubmit="showMessage(event)">
+
+        <h2 class="mb-5">İletişim</h2>
+
+        <label>Ad Soyad</label>
+        <input type="text" class="form-control" name="AdSoyad" />
+
+        <label>Mail</label>
+        <input type="text" class="form-control" name="Mail" />
+
+        <label>Konu</label>
+        <input type="text" class="form-control" name="Konu" />
+
+
+        <label>Mesaj</label>
+        <input type="text" class="form-control" name="Mesaj" />
+        <br />
+
+        <button class="btn btn-info">Mesaj Gönderildi</button>
+
+
+    </form>
+
+    <div id="successMessage" style="display: none; margin-top: 10px;" class="alert alert-success">
+        Mesaj başarıyla gönderildi!
+    </div>
+
+</div>
+
+
+
+
+<script>
+    function showMessage(event) {
+        event.preventDefault(); // Formun sayfa yenilemesini engeller
+        document.getElementById("successMessage").style.display = "block";
+
+        // 3 saniye sonra mesajı gizle
+        setTimeout(() => {
+            document.getElementById("successMessage").style.display = "none";
+        }, 3000);
+
+        // İsteğe bağlı: Formu sıfırla
+        document.getElementById("contactForm").reset();
+    }</script>

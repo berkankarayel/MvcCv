@@ -34,6 +34,45 @@ namespace MvcCv.Controllers
 			return PartialView(egitimler);
 		}
 
+		// Yeteneklerim 
+
+		public PartialViewResult Yeteneklerim()
+		{
+			var yetenekler = db.TblYeteneklerim.ToList();
+			return PartialView(yetenekler);
+		}
+
+		// Hobilerim 
+		public PartialViewResult Hobilerim()
+		{
+			var hobiler = db.TblHobilerim.ToList();
+			return PartialView(hobiler);
+		}
+
+		// Sertifikalar
+		public PartialViewResult Sertifikalar()
+		{
+			var sertifikalar = db.TblSertifikalarim.ToList();
+			return PartialView(sertifikalar);
+		}
+
+		// İletişim 
+		[HttpGet]
+		public PartialViewResult iletisim()
+		{
+			return PartialView();
+		}
+
+		[HttpPost]
+		public PartialViewResult iletisim(TblIletisim t)
+		{
+			t.Tarih=DateTime.Parse(DateTime.Now.ToShortDateString());
+			db.TblIletisim.Add(t);
+			db.SaveChanges();
+			return PartialView();
+		}
+
+
 
 
 	}
