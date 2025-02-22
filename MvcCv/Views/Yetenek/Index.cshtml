@@ -8,6 +8,7 @@
 }
 
 @{ string renk = "null"; }
+@{ string labelrenk = ""; }
 
 <!DOCTYPE html>
 <html>
@@ -23,6 +24,11 @@
                                 </div>
                                
                                 <div class="card-body">
+
+                                    <a href="/Yetenek/YeniYetenek/" class="btn btn-info">Yeni yetenek Ekle</a>
+                                    <br />
+                                    <br />
+
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
@@ -32,6 +38,9 @@
                                                 <th>Derece</th>
                                                 
                                                 <th style="width: 40px">Oran</th>
+                                                <th>Düzenle</th>
+                                                <th>Sil</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -40,18 +49,23 @@
                                                 if (item.Oran >= 0 && item.Oran <= 50)
                                                 {
                                                     renk = "progress-bar progress-bar-danger";
+                                                    labelrenk = "badge bg-danger";
                                                 }
                                                 if (item.Oran >= 51 && item.Oran <= 70)
                                                 {
                                                     renk = "progress-bar bg-warning";
+                                                    labelrenk = "badge bg-warning";
                                                 }
                                                 if(item.Oran>=71 && item.Oran <= 75)
                                                 {
                                                     renk = "progress-bar bg-primary";
+                                                    labelrenk = "badge bg-primary";
                                                 }
                                                 if (item.Oran >= 76 && item.Oran <= 100)
                                                 {
                                                     renk = "progress-bar bg-success";
+                                                    labelrenk = "badge bg-success";
+
                                                 }
                                             <tr>
                                                 <td>@item.ID</td>
@@ -63,7 +77,25 @@
                                                         <div class="@renk" style="width:@item.Oran%"></div>
                                                     </div>
                                                 </td>
-                                                <td><span class="badge bg-danger">@item.Oran</span></td>
+                                                <td><span class="@renk">@item.Oran</span></td>
+                                                <td>
+                                                    <a class="btn btn-info btn-sm" href="/Yetenek/YetenekDuzenle/@item.ID">
+                                                        <i class="fas fa-pencil-alt">
+
+                                                        </i>
+                                                        Düzenle
+                                                    </a>
+                                                </td>
+
+                                                <td>
+                                                    <a class="btn btn-danger btn-sm" href="/Yetenek/YetenekSil/@item.ID">
+                                                        <i class="fas fa-trash">
+
+                                                        </i>
+                                                        SİL
+                                                    </a>
+                                                </td>
+
                                             </tr>
 
                                             }
